@@ -15,6 +15,7 @@ You start with a two dimensional grid of cells, where each cell is either alive 
    2. Any live cell with more than three live neighbors dies, as if by overcrowding.
    3. Any live cell with two or three live neighbors lives on to the next generation.
    4. Any dead cell with exactly three live neighbors becomes a live cell.
+
 You should write a program that can accept an arbitrary grid of cells, and will output a similar grid showing the next generation.
 
 ## Clues
