@@ -22,6 +22,7 @@ You should write a program that can accept an arbitrary grid of cells, and will 
 The input starting position could be a text file that looks like this:
 
 **Generation 1**:
+
     4 8
     ........
     ....*...
@@ -30,6 +31,7 @@ The input starting position could be a text file that looks like this:
 And the output could look like this:
 
 **Generation 2**:
+
     4 8
     ........
     ...**...
