@@ -1,7 +1,7 @@
 require 'cell'
 
 describe Cell do
-  grid = [[0,1,0],[0,0,0],[0,0,0]]
+  grid = [[0,1,0],[1,0,0],[1,0,0]]
 
   context "a cell's state indicates its life" do
     it "returns dead when the state is 0" do
@@ -29,7 +29,7 @@ describe Cell do
 
   context "a cell in a grid has neighbors" do
     cell = Cell.new(grid, 1, 1)
-    
+
     it "returns an array of the northern neighbor coordinates for a cell" do
       expect(cell.find_northern_neighbor).to eq([0,1])
     end
@@ -48,11 +48,23 @@ describe Cell do
     it "returns an array of the southeastern neighbor coordinates for a cell" do
       expect(cell.find_southeastern_neighbor).to eq([2,2])
     end
-     it "returns an array of the eastern neighbor coordinates for a cell" do
+    it "returns an array of the eastern neighbor coordinates for a cell" do
       expect(cell.find_eastern_neighbor).to eq([1,2])
     end
     it "returns an array of the northeastern neighbor coordinates for a cell" do
       expect(cell.find_northeastern_neighbor).to eq([0,2])
+    end
+
+    it "creates an array with all the neighbors" do
+      expect(cell.get_neighbors).to eq([[0,1],[0,0],[1,0],[2,0],[2,1],[2,2],[1,2],[0,2]])
+    end
+  end
+
+  context "a cell may have living neighbors" do
+    cell = Cell.new(grid, 1, 1)
+
+    it "has three living neighbors" do
+      expect(cell.get_number_of_living_neighbors).to eq(3)
     end
   end
 end
