@@ -60,11 +60,19 @@ describe Cell do
     end
   end
 
-  context "a cell may have living neighbors" do
+  context "may have living neighbors" do
     cell = Cell.new(grid, 1, 1)
 
     it "has three living neighbors" do
       expect(cell.get_number_of_living_neighbors).to eq(3)
+    end
+  end
+
+  context "may not have neighbors to some directions" do
+    cell = Cell.new(grid, 0, 0)
+
+    it "has two living neighbors" do
+      expect(cell.get_number_of_living_neighbors).to eq(2)
     end
   end
 end

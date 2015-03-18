@@ -1,5 +1,5 @@
 class Cell
-  attr_reader :state, :x, :y, :grid, :living_neighbors
+  attr_reader :state, :x, :y, :grid, :number_of_living_neighbors
   def initialize(grid, x, y)
     @x = x
     @y = y
@@ -31,31 +31,41 @@ class Cell
   end
 
   def get_neighbors
-    [find_northern_neighbor, find_northernwestern_neighbor, 
+    neighbors = [find_northern_neighbor, find_northernwestern_neighbor, 
       find_western_neighbor, find_southwestern_neighbor, 
       find_southern_neighbor, find_southeastern_neighbor, 
-      find_eastern_neighbor, find_northeastern_neighbor]
+      find_eastern_neighbor, find_northeastern_neighbor].compact
   end
 
   def get_number_of_living_neighbors
     neighbor_states = []
     get_neighbors.each do |x, y|
-      neighbor_states << grid[x][y]
+      if grid[x][y] != nil
+        neighbor_states << grid[x][y]
+      end
     end
-    @living_neighbors = neighbor_states.reduce(:+)
+    @number_of_living_neighbors = neighbor_states.reduce(:+)
   end
 
   def find_northern_neighbor
-    [x-1, y]
+    if (x-1 >= 0)
+      [x-1, y]
+    end
   end
   def find_northernwestern_neighbor
-    [x-1, y-1]
+    if (x-1 >= 0 && y-1 >=0)
+      [x-1, y-1]
+    end
   end
   def find_western_neighbor
-    [x, y-1]
+    if (y-1 >= 0)
+      [x, y-1]
+    end
   end
   def find_southwestern_neighbor
-    [x+1, y-1]
+    if (y-1 >= 0)
+      [x+1, y-1]
+    end
   end
   def find_southern_neighbor
     [x+1, y]
@@ -67,6 +77,8 @@ class Cell
     [x, y+1]
   end
   def find_northeastern_neighbor
-    [x-1, y+1]
+    if (x-1 >= 0)
+      [x-1, y+1]
+    end
   end
 end
