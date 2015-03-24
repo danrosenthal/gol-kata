@@ -5,6 +5,13 @@ class Cell
     @number_of_living_neighbors = number_of_living_neighbors
   end
 
+  def self.live_state
+    :living
+  end
+  def self.dead_state
+    :dead
+  end
+
   def living?
     @state == :living
   end
@@ -19,27 +26,29 @@ class Cell
   end
 
   def underpopulated?
-   number_of_living_neighbors < 2
+   @number_of_living_neighbors < 2
   end
   def overcrowded?
-    number_of_living_neighbors > 3
+    @number_of_living_neighbors > 3
   end
   def hospitable?
-    number_of_living_neighbors.between?(2,3)
+    @number_of_living_neighbors.between?(2,3)
   end
   def favorable?
-    number_of_living_neighbors == 3
+    @number_of_living_neighbors == 3
   end
 
-  def set_next_state!
+  def next_state?
     if (underpopulated? && living?)
-      die!
+      @state = :dead
     elsif (overcrowded? && living?)
-      die!
+      @state = :dead
     elsif (hospitable? && living?)
-      live!
+      @state = :living
     elsif (favorable? && dead?)
-      live!
+      @state = :living
+    else
+      @state = :dead
     end
   end
 end

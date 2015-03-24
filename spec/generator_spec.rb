@@ -5,7 +5,11 @@ describe Generator do
     grid = [[:dead,:dead,:dead, :dead],[:dead,:dead,:dead, :dead],[:dead,:dead,:living,:dead],[:dead,:dead,:dead,:dead]]
     generator = Generator.new(grid)
     it "kills the living cell" do
-      expect(generator.grid[2][2]).to eq(:dead) 
+      generator.next_generation
+	
+      expected_grid = [[:dead,:dead,:dead, :dead],[:dead,:dead,:dead, :dead],[:dead,:dead,:dead,:dead],[:dead,:dead,:dead,:dead]]
+
+      expect(generator.grid).to eq(expected_grid)
     end
   end
 end

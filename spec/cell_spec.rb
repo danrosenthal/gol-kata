@@ -53,8 +53,7 @@ describe Cell do
   context "has one living neighbor and is alive" do
     it "should die" do
       cell = Cell.new(:living, 1)
-      cell.set_next_state!
-      expect(cell.state).to eq(:dead)
+      expect(cell.next_state?).to eq(:dead)
     end
   end
 end

@@ -1,14 +1,13 @@
-require 'cell.rb'
+require './lib/cell.rb'
 
 class Neighborhood
-  attr_reader :grid, :x, :y, :live_state
+  attr_reader :grid
   def initialize(grid)
     @grid = grid
-    @live_state = Cell.new.live_state
   end
 
   def number_of_living_neighbors(x,y)
-    get_neighbors(x,y).map { |x, y| grid[x][y] } .count(live_state)
+    get_neighbors(x,y).map { |x, y| grid[x][y] } .count(Cell.live_state)
   end
 
   def get_neighbors(x,y)
