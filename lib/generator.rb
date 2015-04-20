@@ -19,9 +19,4 @@ class Generator
     grid
   end
 
-  def future_generations(number_of_generations)
-    number_of_generations.times do
-      next_generation
-    end
-  end
 end
