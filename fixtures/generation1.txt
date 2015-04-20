@@ -1,4 +1,0 @@
-:living :living :dead :dead
-:living :living :dead :dead
-:living :dead :living :dead
-:living :dead :living :dead

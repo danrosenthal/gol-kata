@@ -1,4 +1,0 @@
-[
-[:living,:living],
-[:living,:living]
-]
